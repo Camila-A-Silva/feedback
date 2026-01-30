@@ -7,6 +7,11 @@ app = Flask(__name__)
 def pg_principal():
     return render_template("principal.html")
 
+@app.route("/sobre")
+def pg_sobre():
+    return render_template("sobre.html")
+
+
 
 
 
