@@ -42,8 +42,9 @@ def add_comentario():
     print(lista_comentario)
     return redirect("/comentario")
 
-
-app.run(debug=True)
+# o host é para que todos possam acessar a página
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
 
 # o debug=True para não precisarmos desligar o servidor, ele altera automaticamente 
 # get para abrir a página
