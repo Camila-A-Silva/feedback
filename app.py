@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import random
 
 
@@ -26,6 +26,7 @@ def login_postn():
     senha = request.form.get("senha")
 
     if usuario == "Camila" and senha == "1234":
+        session("usuario") == "Camila"
         return redirect("/comentario")
 
     else:
@@ -33,7 +34,11 @@ def login_postn():
     
 @app.route("/comentario", methods=["GET"])
 def pg_comentario():
-    return render_template("comentario.html", lista_comentario = lista_comentario)
+    if "usuario" in session:
+        return render_template("comentario.html", lista_comentario = lista_comentario)
+    else:
+        return redirect("/login")
+
 
 @app.route("/add_comentario", methods=["POST"])
 def add_comentario():
